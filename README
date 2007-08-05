@@ -1,0 +1,85 @@
+xv
+------------------------------------------
+xv is an interactive image manipulation program for the X Window System. 
+It can operate on images in the GIF, JPEG, TIFF, PBM, PGM, PPM, XPM, X11 
+bitmap, Sun Rasterfile, Targa, RLE, RGB, BMP, PCX, FITS, and PM formats 
+on all known types of X displays. It can generate PostScript files, and 
+if you have ghostscript (version 2.6 or above) installed on your 
+machine, it can also display them.
+
+Runtime requirements:
+  cygwin-1.5.24-2
+  ghostscript-x11
+  libX11_6-1.1.1-1
+  libjpeg62-6b-12
+  libpng12-1.2.18-2
+  libtiff5-3.8.2-3
+  zlib-1.2.3-2
+
+Build requirements:
+(besides corresponding -devel packages)
+  cygwin-1.5.24-2
+  binutils-20060817-1
+  cygport-0.3.5-1
+  gcc-core-3.4.4-3
+  make-3.81-1
+
+Canonical website:
+  http://www.trilon.com/xv/index.html
+
+Canonical download:
+  ftp://ftp.cis.upenn.edu/pub/xv/
+
+License:
+  Shareware
+
+-------------------------------------------
+
+Build instructions:
+  unpack xv-3.10a-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./xv-3.10a-X.cygport all
+
+This will create:
+  /usr/src/xv-3.10a-X-src.tar.bz2
+  /usr/src/xv-3.10a-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /usr/bin/bggen.exe
+  /usr/bin/vdcomp.exe
+  /usr/bin/xcmap.exe
+  /usr/bin/xv.exe
+  /usr/bin/xvpictoppm.exe
+  /usr/share/doc/Cygwin/xv-3.10a.README
+  /usr/share/doc/xv-3.10a/BUGS
+  /usr/share/doc/xv-3.10a/ChangeLog
+  /usr/share/doc/xv-3.10a/IDEAS
+  /usr/share/doc/xv-3.10a/INSTALL
+  /usr/share/doc/xv-3.10a/README
+  /usr/share/doc/xv-3.10a/README.jumbo
+  /usr/share/doc/xv-3.10a/bmp.doc
+  /usr/share/doc/xv-3.10a/gif87.doc
+  /usr/share/doc/xv-3.10a/gif89.doc
+  /usr/share/doc/xv-3.10a/xvdocs.pdf
+  /usr/share/doc/xv-3.10a/xvdocs.ps
+  /usr/share/man/man1/bggen.1.gz
+  /usr/share/man/man1/vdcomp.1.gz
+  /usr/share/man/man1/xcmap.1.gz
+  /usr/share/man/man1/xv.1.gz
+  /usr/share/man/man1/xvpictoppm.1.gz
+
+------------------
+
+Port Notes:
+
+----- version 3.10a-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/
