@@ -1,0 +1,64 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4~' -x aclocal.m4t -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x libtool.m4 -x ltoptions.m4 -x ltsugar.m4 -x ltversion.m4 -x 'lt~obsolete.m4' -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/xv-3.10a/Makefile src/xv-3.10a/Makefile
+--- origsrc/xv-3.10a/Makefile	2008-05-07 14:37:10.203125000 -0500
++++ src/xv-3.10a/Makefile	2008-05-07 14:37:13.781250000 -0500
+@@ -6,7 +6,7 @@
+ # note that -ansi kills __USE_MISC (gcc 2.95.3), which, at least on Linux,
+ # determines whether stdlib.h includes prototypes for mktemp(), random(), etc.
+ # (i.e., if you use it, you will get unnecessary compiler warnings)
+-#CC = gcc
++CC = gcc
+ 
+ # use this if you're using 'cc' on a DEC Alpha (OSF/1) or MIPS (Ultrix) system:
+ # CC = cc -std1 -Olimit 750
+@@ -27,7 +27,7 @@
+ # slightly more warnings... older code often made non-const pointers to
+ # static strings (nothing should blow up unless something tries to write
+ # to them):
+-#CCOPTS = -O3 -Wall -Wpointer-arith -Wcast-align -Wwrite-strings -Wnested-externs
++CCOPTS = -O3 -Wall -Wpointer-arith -Wcast-align -Wwrite-strings -Wnested-externs
+ #
+ # for the next step up in gcc noise, try adding -W (but note that it adds a
+ # huge number of unused-parameter and signed/unsigned comparison warnings):
+@@ -56,11 +56,11 @@
+ ### NOTE: Users of old K&R compilers (i.e., any version not supporting C89
+ ### string concatenation, such as "fub" "ar" => "fubar") should update
+ ### xvtext.c:1831 (or thereabouts) if either PREFIX or DOCDIR changes:
+-PREFIX = /usr/local
++PREFIX = /usr
+ BINDIR = $(PREFIX)/bin
+ MANDIR = $(PREFIX)/share/man/man1
+ MANSUF = 1
+-DOCDIR = $(PREFIX)/share/doc/xv
++DOCDIR = $(PREFIX)/share/doc/xv-3.10a
+ LIBDIR = $(PREFIX)/lib/xv
+ SYSCONFDIR = /etc
+ DESTDIR =
+@@ -209,6 +209,7 @@
+ 
+ ### If you are using a BeOS system, uncomment the following line
+ #MCHN = -DUSE_GETCWD -I/usr/X11/include -L/usr/X11/lib
++MCHN = -DUSE_GETCWD
+ ###
+ ### The stock version of cleandir now should work for BeOS, too, so try
+ ### leaving this commented out:
+@@ -279,7 +280,7 @@
+ 
+ # if your machine has the usleep() function, uncomment the following line:
+ # if it doesn't, or you're not sure, leave this line alone.
+-#TIMERS = -DUSLEEP
++TIMERS = -DUSLEEP
+ 
+ 
+ # if XV locks up whenever you click on *any* of the buttons, the Timer()
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4~' -x aclocal.m4t -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x libtool.m4 -x ltoptions.m4 -x ltsugar.m4 -x ltversion.m4 -x 'lt~obsolete.m4' -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x config.rpath -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/xv-3.10a/xv.h src/xv-3.10a/xv.h
+--- origsrc/xv-3.10a/xv.h	2008-05-07 14:37:09.765625000 -0500
++++ src/xv-3.10a/xv.h	2008-05-07 14:37:13.781250000 -0500
+@@ -158,7 +158,7 @@
+ 
+ #ifndef VMS
+ #  include <errno.h>
+-#  if !defined(__NetBSD__) && !defined(__FreeBSD__) && !defined(__APPLE__)
++#  if !defined(__NetBSD__) && !defined(__FreeBSD__) && !defined(__APPLE__) && !defined(__CYGWIN__)
+ #    if !(defined __GLIBC__ && __GLIBC__ >= 2)
+        extern int   errno;         /* SHOULD be in errno.h, but often isn't */
+        extern char *sys_errlist[]; /* this too... */

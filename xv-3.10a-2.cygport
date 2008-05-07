@@ -1,0 +1,28 @@
+jumbo_v=20070520
+
+DESCRIPTION="X11 interactive image manipulation program"
+HOMEPAGE="http://www.trilon.com/xv/index.html"
+SRC_URI="ftp://ftp.cis.upenn.edu/pub/xv/${P}.tar.gz
+         mirror://sourceforge/png-mng/${P}-jumbo-patches-${jumbo_v}.tar.gz"
+
+CYGPORT_USE_UNSTABLE_API=1
+
+# this must be applied *before* the Gentoo PATCH_URIs
+src_unpack_hook() {
+	cygpatch ../${P}-jumbo-fix-enh-patch-${jumbo_v}.txt
+}
+
+PATCH_URI="
+	mirror://portage/media-gfx/xv/files/${P}-osx-bsd-${jumbo_v}.patch
+	mirror://portage/media-gfx/xv/files/${P}-vdcomp-osx-${jumbo_v}.patch
+	mirror://portage/media-gfx/xv/files/${P}-disable-jp2k-${jumbo_v}.patch
+	mirror://portage/media-gfx/xv/files/${P}-fix-wait-${jumbo_v}.patch
+"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake
+}
+
+DOCS="README.jumbo README.pod IDEAS docs/*.doc"
