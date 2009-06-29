@@ -1,5 +1,5 @@
 category: Graphics
-requires: cygwin ghostscript-x11 libX11_6 libjpeg62 libpng12 libtiff5 zlib
+requires: ghostscript-x11 libX11_6 libjpeg62 libpng12 libtiff5 zlib
 sdesc: "X11 interactive image manipulation program"
 ldesc: "xv is an interactive image manipulation program for the X Window 
 System. It can operate on images in the GIF, JPEG, TIFF, PBM, PGM, PPM, 
