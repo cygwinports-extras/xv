@@ -17,12 +17,15 @@ PATCH_URI="
 	mirror://portage/media-gfx/xv/files/${P}-vdcomp-osx-${jumbo_v}.patch
 	mirror://portage/media-gfx/xv/files/${P}-disable-jp2k-${jumbo_v}.patch
 	mirror://portage/media-gfx/xv/files/${P}-fix-wait-${jumbo_v}.patch
+	3.10a-cygwin.patch
 "
+
+MAKEOPTS+=" PREFIX=/usr"
 
 src_compile() {
 	lndirs
 	cd ${B}
-	cygmake
+	cygmake CCOPTS="${CFLAGS} -DUSE_GETCWD -DUSLEEP"
 }
 
 DOCS="README.jumbo README.pod IDEAS docs/*.doc"
